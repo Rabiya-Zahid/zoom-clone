@@ -1,3 +1,7 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
 import  express from    "express";
 import  {createServer}  from  "node:http"  ;
 import  {Server}  from  "socket.io";
@@ -17,7 +21,7 @@ app.get("/home" ,(req,res)=>{
     return  res.json({"hello":"World"})
 });
 const   start=async()=>{
-    const   connectionDb=await  mongoose.connect("mongodb+srv://zoyakhan95234_db_user:Rabi32640@zoomclonecluster.w91wxrr.mongodb.net/?appName=zoomclonecluster")
+    const   connectionDb=await  mongoose.connect("process.env.MONGO_URL")
     console.log("mongo  connected");
     server.listen(app.get("port"),()=>{
         console.log("Listening  on  port    8000");
