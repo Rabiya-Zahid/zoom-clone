@@ -290,7 +290,8 @@ console.log("VIDEO TRACKS:", stream.getVideoTracks());
             socketRef.current.emit('join-call', window.location.href)
             socketIdRef.current = socketRef.current.id
 
-            socketRef.current.on('chat-message', addMessage)
+            socketRef.current.off('chat-message', addMessage)
+socketRef.current.on('chat-message', addMessage)
 
             socketRef.current.on('user-left', (id) => {
                 setVideos((videos) => videos.filter((video) => video.socketId !== id))
